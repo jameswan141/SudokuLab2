@@ -1,0 +1,67 @@
+package pkgHelper;
+
+ import static org.junit.Assert.*;
+ import static org.junit.jupiter.api.Assertions.*;
+
+ import java.util.Arrays;
+
+ import org.junit.Test;
+ import org.junit.jupiter.api.Test;
+
+
+ public class LatinSquareTest {
+     public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       System.out.println("Enter number n: ");
+       int n = sc.nextInt();
+       sc.nextLine();
+       char arr[][] = new char[n][n];
+       System.out.println("Enter " + n + " rows of letters separated by spaces: ");
+       for (int i = 0; i < n; i++) {
+           String[] words = sc.nextLine().split(" ");
+           // System.out.println(Arrays.toString(words));
+           for (int j = 0; j < n; j++) {
+               arr[i][j] = words[j].charAt(0);
+           }
+       }
+  
+      
+       for (int i = 0; i < n; i++) {
+           for (int j = 0; j < n; j++) {
+          
+               int count=0;
+               for (int k = 0; k < arr[i].length; k++) {
+                   if(count>1){
+                       System.out.println("The input array is not a Latin square");
+                       System.exit(0);
+                   }
+                   if(arr[i][j]==arr[j][k]){
+                       count++;
+                   }
+                  
+               }
+           }
+       }
+      
+       for (int i = 0; i < n; i++) {
+           for (int j = 0; j < n; j++) {
+          
+               int count=0;
+               for (int k = 0; k < arr[i].length; k++) {
+                   if(count>1){
+                       System.out.println("The input array is not a Latin square");
+                       System.exit(0);
+                   }
+                   if(arr[j][i]==arr[k][j]){
+                       count++;
+                   }
+                  
+               }
+           }
+      
+       }
+       System.out.println("The input array is a Latin square");
+       sc.close();
+   }
+
+}
